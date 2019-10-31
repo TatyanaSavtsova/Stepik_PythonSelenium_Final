@@ -26,7 +26,7 @@ class ProductPage(BasePage):
     def should_be_product_name_in_alert(self):
         assert self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_ALERT).text == \
                self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text,\
-            "Product name in success alert doesn't math the name of added product"
+               "Product name in success alert doesn't math the name of added product"
 
     def should_be_price_alert(self):
         assert self.is_element_present(*ProductPageLocators.PRICE_ALERT), "Price alert is not present"
@@ -34,4 +34,12 @@ class ProductPage(BasePage):
     def should_be_product_price_in_alert(self):
         assert self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_ALERT).text == \
                self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text, \
-            "Product price in price alert doesn't math the price of added product"
+               "Product price in price alert doesn't math the price of added product"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_ALERT), \
+               "Success message is presented, but should not be"
+
+    def should_disappear_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_ALERT), \
+            "Success message is presented, but should not be"
